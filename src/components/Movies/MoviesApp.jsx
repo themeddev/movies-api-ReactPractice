@@ -1,6 +1,6 @@
 import MoviesDetail from "./MoviesDetail";
 import MoviesList from "./MoviesList";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 
 const MoviesApp = () => {
@@ -39,7 +39,8 @@ const MoviesApp = () => {
     return ( 
         <Router>
             <Routes>
-                <Route path="/" element={<MoviesList handelSearch={handelSearch} movies={movies} handelChange={handelChange} />} />
+                <Route path="/" element={
+                    <MoviesList handelSearch={handelSearch} movies={movies} handelChange={handelChange} />} />
                 <Route path="/:id" element={<MoviesDetail />} />
             </Routes>
         </Router>

@@ -1,45 +1,47 @@
 import Moviesitem from "./MoviesItem";
+import SideBar from "./SideBar";
 
 const MoviesList = ({handelChange, handelSearch, movies}) => {
 
-
-
-
-
-
-
     
     return ( 
-        <>
-        <form onSubmit={(e) => handelSearch(e)}>
+    <>
+    
+    <SideBar> 
+    <form onSubmit={(e) => handelSearch(e)}>
+      
+      <h2>Movies:</h2>
 
-        <h2>Movies : </h2>
-
-        <input type="text" name="title" placeholder="title" onChange={handelChange} />
-        <input name="year" type="text" placeholder="year" onChange={handelChange} />
-        <select name="type" onChange={handelChange} >
-            <option>select</option>
-            <option value="movie">movie</option>
-            <option value="series">series</option>
-            <option value="episode">episode</option>
-        </select>
-
-
-        <button>Search</button>
-
-        </form>
+      <div className="mb-3 row">
         
-        <div className="all">
-            {
-            movies.length > 0 ? movies.map
-            (
-                (item , index ) => <Moviesitem item={item} key={index} />
-            ):  "No Movie Found"
-            }
-        </div>
+        <input type="text" className="form-control m-2 col" id="title" name="title" placeholder="Enter title" onChange={handelChange} />
+
+        <input type="text" className="form-control m-2 col" id="year" name="year" placeholder="Enter year" onChange={handelChange} />
+
+        <select className="form-select m-2 col" id="type" name="type" onChange={handelChange}>
+          <option value="">Select</option>
+          <option value="movie">Movie</option>
+          <option value="series">Series</option>
+          <option value="episode">Episode</option>
+        </select>
+      </div>
+      <button type="submit" className="btn btn-primary col">Search</button>
+    
+    </form>
+
+    <div className="all">
+        {
+        movies ? movies.map
+        (
+            (item , index ) => <Moviesitem item={item} key={index} />
+        ):  "No Movie Found"
+        }
+    </div>
+    </SideBar>
 
 
-        </>
+
+    </>
 
      );
 }
